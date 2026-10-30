@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class PlayerController : MonoBehaviour
 
     public float speed;
     public float groundDistance;
+    public int Health = 100;
+    public float HitTime;
+
     void Start()
     {
         PrincessBody = gameObject.GetComponent<Rigidbody>();
@@ -16,6 +20,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HitTime -= Time.deltaTime;
         RaycastHit hit;
         Vector3 castPos = transform.position;
         castPos.y += 1;
@@ -42,6 +47,26 @@ public class PlayerController : MonoBehaviour
         else if (x != 0 && x > 0)
         {
             sr.flipX = false;
+        }
+
+        if (Health <= 0)
+        {
+            Debug.Log("GAME OVER");
+        }
+       
+    }
+  
+    public void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("0");
+        
+
+        if (collision.gameObject.CompareTag("Enemy") && HitTime !<= 0)
+        {
+            Debug.Log("HEALTHLOST");
+            Health -= 5;
+            HitTime = 5f;
+
         }
     }
 }
