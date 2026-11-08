@@ -133,6 +133,7 @@ MonoBehaviour:
   mainTarget: {fileID: 8882174558017369986, guid: 271ed28de3a51f9408cdf6e11656fc6f, type: 3}
   secondTarget: {fileID: 5404523077376150213, guid: de752be4e7a63d04e943d72d94cab3e8, type: 3}
   EnemyHealth: 10
+  Player: {fileID: 0}
 --- !u!195 &8102275885816002184
 NavMeshAgent:
   m_ObjectHideFlags: 0

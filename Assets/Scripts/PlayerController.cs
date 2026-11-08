@@ -1,3 +1,6 @@
+using Microsoft.Unity.VisualStudio.Editor;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,16 +13,25 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float groundDistance;
     public int Health = 100;
+    public TextMeshProUGUI PlayerHealth;
     public float HitTime;
-
+    public bool FightMode;
+    public bool HelpMode;
+    public static PlayerController Player;
+    
     void Start()
     {
+        Player = this;
         PrincessBody = gameObject.GetComponent<Rigidbody>();
+        FightMode = false;
+        HelpMode = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerHealth.text = "Health" + "\n" + Health;
+
         HitTime -= Time.deltaTime;
         RaycastHit hit;
         Vector3 castPos = transform.position;
@@ -52,13 +64,16 @@ public class PlayerController : MonoBehaviour
         if (Health <= 0)
         {
             Debug.Log("GAME OVER");
+            GameManager.EndScreen.gameObject.SetActive(true);
+            
         }
-       
+
+       SwitchModes();
     }
   
     public void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("0");
+        
         
 
         if (collision.gameObject.CompareTag("Enemy") && HitTime !<= 0)
@@ -69,4 +84,19 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+    //This is how she will swap from HELP to FIGHT modes. Need to make it so that the player can only cause damage in FIGHT MODE, and can only help in HELP MODE
+    public void SwitchModes()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            FightMode = false; HelpMode = true;
+            sr.color = Color.softRed;
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            FightMode = true; HelpMode = false;
+            sr.color = Color.lightPink;
+        }
+    }
+   
 }

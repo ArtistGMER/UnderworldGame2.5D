@@ -9,9 +9,12 @@ public class EnemyAI : MonoBehaviour
 
     public NavMeshAgent enemy;
     public Transform mainTarget;
-    public Transform secondTarget;
+    //public Transform secondTarget;
     private IObjectPool<EnemyAI> enemyPool;
     public float EnemyHealth = 10;
+    
+    public float ChaseBufferTime;
+    public float ChaseBufferWaitTime = 1;
 
     public void SetPool(IObjectPool<EnemyAI> pool)
     {
@@ -19,33 +22,56 @@ public class EnemyAI : MonoBehaviour
     }
     void Update()
     {
-        enemy.SetDestination(mainTarget.position);
-
-        float maindist = Vector3.Distance(mainTarget.transform.position, transform.position);
-        float seconddist = Vector3.Distance(secondTarget.transform.position, transform.position);
-        if (seconddist < maindist)
+      
+        transform.LookAt(Camera.main.transform);
+        ChaseBufferTime += Time.deltaTime;
+        if (ChaseBufferTime >= ChaseBufferWaitTime)
         {
-
-            enemy.SetDestination(secondTarget.position);
+            Debug.Log("0");
+            ChaseBufferTime = 0f;
+            float maindist = Vector3.Distance(mainTarget.position, transform.position);
+            float seconddist = Vector3.Distance(PlayerController.Player.transform.position, transform.position);
+            if (seconddist < (maindist - 1f))
+            {
+                Debug.Log("1");
+                enemy.SetDestination(PlayerController.Player.transform.position);
+                Debug.Log(PlayerController.Player.transform.position);
+            }
+            else
+            {
+                Debug.Log("2");
+                enemy.SetDestination(mainTarget.position);
+                Debug.Log(mainTarget.position);
+            }
         }
+        
 
         
     }
     public void OnMouseDown()
     {
-        EnemyHealth -= 5;
-        if (EnemyHealth <= 0)
+        if (PlayerController.Player != null && PlayerController.Player.FightMode)
         {
-            Destroy(gameObject);
-        }
+            EnemyHealth -= 5;
+            
+            if (EnemyHealth <= 0)
+            {
+                //EnemyHealth = 10;
+                //enemyPool.Release(this);
+                Destroy(gameObject);
+            }
+        }    
+        
+       
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Center"))
-        {
-            enemyPool.Release(this);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.CompareTag("Center"))
+    //    {
+    //        enemyPool.Release(this);
+
+    //    }
+    //}
 
 }
