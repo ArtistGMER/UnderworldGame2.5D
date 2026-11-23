@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI CenterHealthDisplay;
     public TextMeshProUGUI TimerDisplay;
     public static GameManager GM;
-    public static GameObject EndScreen;
+    public GameObject EndScreen;
     void Start()
     {
         CenterHealth = 100;
@@ -43,11 +43,25 @@ public class GameManager : MonoBehaviour
         if (CenterHealth <= 0)
         {
             Debug.Log("GAME OVER VIA CENTER");
+            Time.timeScale = 0;
             EndScreen.gameObject.SetActive(true);
         }
         if (GameTime <= 0)
         {
+            Time.timeScale = 0;
             EndScreen.gameObject.SetActive(true);
+        }
+        if (Happiness <= 0)
+        {
+            Time.timeScale = 0;
+            EndScreen.gameObject.SetActive(true);
+            if (PlayerController.Player.Health <= 0)
+            {
+                Debug.Log("GAME OVER");
+                Time.timeScale = 0;
+                EndScreen.gameObject.SetActive(true);
+
+            }
         }
     }
     public void OnTriggerStay(Collider collision)

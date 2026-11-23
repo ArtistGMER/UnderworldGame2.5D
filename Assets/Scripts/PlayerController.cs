@@ -1,4 +1,4 @@
-using Microsoft.Unity.VisualStudio.Editor;
+
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -61,12 +61,7 @@ public class PlayerController : MonoBehaviour
             sr.flipX = false;
         }
 
-        if (Health <= 0)
-        {
-            Debug.Log("GAME OVER");
-            GameManager.EndScreen.gameObject.SetActive(true);
-            
-        }
+        
 
        SwitchModes();
     }

@@ -133,8 +133,9 @@ MonoBehaviour:
   TimeToHelp: 0
   Manager: {fileID: 0}
   RegNPC: {fileID: 5014856763548127924}
-  minTime: 5
-  maxTime: 10
+  minTime: 20
+  maxTime: 40
+  NeedsHelpUI: {fileID: 0}
 --- !u!195 &5014856763548127924
 NavMeshAgent:
   m_ObjectHideFlags: 0

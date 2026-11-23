@@ -8488,8 +8488,6 @@ RectTransform:
   - {fileID: 2075618614}
   - {fileID: 1644866129}
   - {fileID: 1940379305}
-  - {fileID: 2085232439}
-  - {fileID: 1112355479}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10803,17 +10801,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112355478}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1501232514}
-  m_Father: {fileID: 823815677}
+  m_Father: {fileID: 1940379305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 113.89, y: -95.02}
+  m_AnchoredPosition: {x: 121.79002, y: -94.42}
   m_SizeDelta: {x: 176.34, y: 77.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1112355480
@@ -17835,6 +17833,8 @@ RectTransform:
   - {fileID: 2069716814}
   - {fileID: 267086728}
   - {fileID: 604939816}
+  - {fileID: 2085232439}
+  - {fileID: 1112355479}
   m_Father: {fileID: 823815677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -17892,9 +17892,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9025a98ea589b294bbaede0d83163902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  HPScoreText: {fileID: 1233274404}
+  HPScoreText: {fileID: 1787858217}
   CPScoreText: {fileID: 526906156}
   Retry: {fileID: 2085232440}
+  Quit: {fileID: 1112355480}
 --- !u!1 &1946034950
 GameObject:
   m_ObjectHideFlags: 0
@@ -19078,17 +19079,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085232438}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1671839853}
-  m_Father: {fileID: 823815677}
+  m_Father: {fileID: 1940379305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125.3, y: -95.02}
+  m_AnchoredPosition: {x: -117.40001, y: -94.42}
   m_SizeDelta: {x: 176.34, y: 77.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2085232440
@@ -20052,10 +20053,6 @@ PrefabInstance:
       propertyPath: NeedsHelpUI
       value: 
       objectReference: {fileID: 693691115}
-    - target: {fileID: 7420908022615661277, guid: 50fdea0ddf749a343b3994aed6860fd3, type: 3}
-      propertyPath: Notification
-      value: 
-      objectReference: {fileID: 823815676}
     - target: {fileID: 8564476175053462082, guid: 50fdea0ddf749a343b3994aed6860fd3, type: 3}
       propertyPath: m_Name
       value: TOWNNPC
@@ -20073,6 +20070,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4464209286441691316, guid: 271ed28de3a51f9408cdf6e11656fc6f, type: 3}
+      propertyPath: EndScreen
+      value: 
+      objectReference: {fileID: 1940379304}
     - target: {fileID: 4464209286441691316, guid: 271ed28de3a51f9408cdf6e11656fc6f, type: 3}
       propertyPath: HappyDisplay
       value: 
